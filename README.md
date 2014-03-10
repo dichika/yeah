@@ -9,7 +9,7 @@ You need to install dependents before installing yeah.
 #install.packages("devtools")
 
 library(devtools)
-install_github("dichika/pingr") # modified original pingr package
+install_github("rasmusab/pingr")
 install_github("dichika/yeah")
 ```
 
