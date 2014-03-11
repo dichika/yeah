@@ -22,9 +22,9 @@ yeah("yeah")
 ```
 
 ## Usage
-pings(pkgname)
+yeah(pkgname)
 
 ## Arguments
 
 ### pkgname
-Package name which you want to listen to author's voice in.
+The package name which you want to listen to author's voice in.
