@@ -9,3 +9,9 @@ yeah <- function(pkgname=NULL){
   }
   ping(sound_path)
 }
+
+libraryy <- function(package=NULL,...){
+  pkg <- as.character(substitute(package))
+  library(package=pkg, character.only = TRUE, ...)
+  yeah(pkg)
+}
