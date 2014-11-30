@@ -6,7 +6,7 @@ yeah <- function(pkgname=NULL){
   if(!(nchar(sound_path)>0)){
     stop("\nHmm...this package doesn't have no yeah.")
   }
-  beep(sound_path)
+  beepr::beep(sound_path)
 }
 
 libraryy <- function(package=NULL,...){
@@ -17,5 +17,5 @@ libraryy <- function(package=NULL,...){
 
 detayo <- function(){
   path <- system.file("sounds/yuuisa.wav", package="yeah")
-  beep(path)
+  beepr::beep(path)
 }
