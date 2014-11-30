@@ -3,13 +3,11 @@ yeah
 
 yeah connects R users with voice.
 ## Installation
-You need to install dependents before installing yeah.
 
 ```r
 #install.packages("devtools")
 
 library(devtools)
-install_github("rasmusab/pingr")
 install_github("dichika/yeah")
 ```
 
@@ -27,4 +25,4 @@ yeah(pkgname)
 ## Arguments
 
 ### pkgname
-The package name which you want to listen to author's voice in.
+The package name which you want to listen to 
