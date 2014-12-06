@@ -19,3 +19,15 @@ detayo <- function(){
   path <- system.file("sounds/yuuisa.wav", package="yeah")
   beepr::beep(path)
 }
+
+tsurami <- function(){
+  path <- system.file("data/fran.csv", package="yeah")
+  dat <- read.csv(path, as.is=TRUE)
+  num <- sample(seq(nrow(dat)),1)
+  res <- paste(collapse="\n", 
+               c(sprintf("\n%s", dat$content[num]),
+               sprintf("  --%s", dat$author[num]),
+               sprintf("    %s", dat$URL[num])
+               ))
+  cat(res)
+}
