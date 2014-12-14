@@ -20,6 +20,11 @@ detayo <- function(){
   beepr::beep(path)
 }
 
+zoi <- function(){
+  path <- system.file("sounds/zoi.wav", package="yeah")
+  beepr::beep(path)
+}
+
 tsurami <- function(){
   path <- system.file("data/fran.csv", package="yeah")
   dat <- read.csv(path, as.is=TRUE)
