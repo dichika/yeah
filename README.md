@@ -25,4 +25,7 @@ yeah(pkgname)
 ## Arguments
 
 ### pkgname
-The package name which you want to listen to 
+The package name which you want to listen to.
+
+### License
+The sound files (ainote) by negipo http://github.com/negipo/ainote
