@@ -1,4 +1,5 @@
 require 'java'
+require ARGV[1]
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
