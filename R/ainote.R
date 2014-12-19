@@ -1,9 +1,15 @@
-ainote <- function(jrubypath="/Library/Frameworks/JRuby.framework/Versions/Current/bin/"){
+ainote <- function(jrubypath=NULL,
+                   soundpath=NULL){
   if(Sys.info()["sysname"] != "Darwin"){
     stop("MacOS only",call. = FALSE, domain=NA)
   }  
-  soundpath <- system.file("sounds/ainote/", package="yeah")
   hookpath <- system.file("ruby/hook.rb", package="yeah")
+  if(is.null(soundpath)){
+    soundpath <- system.file("sounds/ainote/", package="yeah")    
+  }
+  if(is.null(jrubypath)){
+    jrubypath <- "/Library/Frameworks/JRuby.framework/Versions/Current/bin/"
+  }
   jrubypath <- paste0(jrubypath,"jruby")
   jnativehookpath <- system.file("java/jNativeHook.jar", package="yeah")
   comd <- paste(jrubypath, hookpath, soundpath, jnativehookpath)
