@@ -25,6 +25,11 @@ zoi <- function(){
   beepr::beep(path)
 }
 
+ganbare <- function(){
+  path <- system.file("sounds/ganbare.wav", package="yeah")
+  beepr::beep(path)
+}
+
 tsurami <- function(){
   path <- system.file("data/fran.csv", package="yeah")
   dat <- read.csv(path, as.is=TRUE)
