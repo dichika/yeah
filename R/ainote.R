@@ -1,5 +1,6 @@
 ainote <- function(jrubypath=NULL,
-                   soundpath=NULL){
+                   soundpath=NULL,
+                   type=NULL){
   if(Sys.info()["sysname"] != "Darwin"){
     stop("MacOS only",call. = FALSE, domain=NA)
   }  

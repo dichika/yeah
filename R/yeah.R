@@ -41,3 +41,43 @@ tsurami <- function(){
                ))
   cat(res)
 }
+
+# numacraw was originally created by Teito Nakagawa
+numacraw<-function(get2=FALSE){
+    set.seed(Sys.time()) 
+    path_back <- system.file("data/back.png", package="yeah")
+    path_front <- system.file("data/front.png", package="yeah")
+    vec<-par()$usr
+    SIZE<-runif(min=0.4,max=1, 1)
+    X<-runif(min=0, max=1, 1)*(vec[2]-vec[1])
+    Y<-runif(min=0, max=1, 1)*(vec[4]-vec[3])
+    D<-ifelse(runif(min = 0 ,1)>0.3, path_front, path_back)
+    if(!get2){
+      rasterImage(png::readPNG(D)
+                  ,X-SIZE*(vec[2]-vec[1])/2
+                  ,Y-SIZE*(vec[4]-vec[3])/2
+                  ,X+SIZE*(vec[2]-vec[1])/2
+                  ,Y+SIZE*(vec[4]-vec[3])/2
+      )
+    }else{
+      rasterImage(png::readPNG(D)
+                  ,X-SIZE*(vec[2]-vec[1])/2
+                  ,Y-SIZE*(vec[4]-vec[3])/2
+                  ,X+SIZE*(vec[2]-vec[1])/4
+                  ,Y+SIZE*(vec[4]-vec[3])/2
+      )
+      rasterImage(png::readPNG(D)
+                  ,X-SIZE*(vec[2]-vec[1])/4
+                  ,Y-SIZE*(vec[4]-vec[3])/2
+                  ,X+SIZE*(vec[2]-vec[1])/2
+                  ,Y+SIZE*(vec[4]-vec[3])/2
+      )
+    }
+}
+setNumacraw <- function(){
+  .LastuserHook <<- getHook("plot.new")
+  setHook("plot.new",numacraw,"append")
+}
+unsetNumacraw <- function(){
+  setHook("plot.new",.LastuserHook,"replace")
+}
