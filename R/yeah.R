@@ -77,7 +77,32 @@ numacraw<-function(get2=FALSE){
 setNumacraw <- function(){
   .LastuserHook <<- getHook("plot.new")
   setHook("plot.new",numacraw,"append")
+  
+  postDrawDetails.gTree <<- function(x) {
+    ggnumacraw()
+  }
 }
 unsetNumacraw <- function(){
   setHook("plot.new",.LastuserHook,"replace")
+  remove(postDrawDetails.gTree, pos = '.GlobalEnv')
 }
+
+getnumacraw <- function () {
+  path_back <- system.file("data/back.png", package = "yeah")
+  path_front <- system.file("data/front.png", package = "yeah")
+  D <- ifelse(runif(min = 0, 1) > 0.3, path_front, path_back)
+  return(png::readPNG(D))
+}
+
+ggnumacraw <- function() {
+  m <- getnumacraw()
+  g <- grid::rasterGrob(m, interpolate = TRUE)
+  vp <- grid::viewport(x = runif(min = 0.2, max = 0.8, 1),
+                       y = runif(min = 0.2, max = 0.8, 1),
+                       width = runif(min = 0.5, max = 1, 1),
+                       height = runif(min = 0.5, max = 1, 1),
+                       just = c("center","center"))
+  g <- grid::editGrob(g, vp = vp)
+  grid::grid.draw(g) 
+}
+
