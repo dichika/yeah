@@ -7,4 +7,4 @@ Author: dichika
 Maintainer: dichika <yourfault@somewhere.net>
 Description: yeah!!!!!!!!!!!!!!!
 License: MIT
-Imports: beepr, png
+Imports: beepr, png, ggplot2
