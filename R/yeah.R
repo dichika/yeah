@@ -27,8 +27,14 @@ zoi <- function(){
 
 doudesuka <- function(num=1){
   f <- sprintf("sounds/sinchoku_u_0%s.wav", num)
-  path <- system.file(f, package="yeah")
+  path <- system.file(sprintf("sounds/sinchoku_u_0%s.wav", num), package="yeah")
   beepr::beep(path)
+}
+
+zoitrance <- function(interval=NULL){
+  interval <- ifelse(!is.null(interval), interval, sample(seq(0.2,0.8,0.1),1))
+  cat("Want to Stop? Press ESC key")
+  repeat{zoi();Sys.sleep(interval);}
 }
 
 ganbare <- function(){
