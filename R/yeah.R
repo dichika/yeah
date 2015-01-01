@@ -25,6 +25,12 @@ zoi <- function(){
   beepr::beep(path)
 }
 
+doudesuka <- function(num=1){
+  f <- sprintf("sounds/sinchoku_u_0%s.wav", num)
+  path <- system.file(f, package="yeah")
+  beepr::beep(path)
+}
+
 ganbare <- function(){
   path <- system.file("sounds/ganbare.wav", package="yeah")
   beepr::beep(path)
@@ -105,4 +111,3 @@ ggnumacraw <- function() {
   g <- grid::editGrob(g, vp = vp)
   grid::grid.draw(g) 
 }
-
