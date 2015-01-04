@@ -37,6 +37,13 @@ zoitrance <- function(interval=NULL){
   repeat{zoi();Sys.sleep(interval);}
 }
 
+dsktrance <- function(interval=NULL,num=NULL){
+  num <- ifelse(!is.null(num), num, 1)
+  interval <- ifelse(!is.null(interval), interval, sample(seq(0.2,0.8,0.1),1))
+  cat("Want to Stop? Press ESC key")
+  repeat{doudesuka(num);Sys.sleep(interval);}
+}
+
 ganbare <- function(){
   path <- system.file("sounds/ganbare.wav", package="yeah")
   beepr::beep(path)
