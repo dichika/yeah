@@ -1,10 +1,9 @@
 Package: yeah
 Type: Package
 Title: just yeah
-Version: 0.3.4
-Published: 2015-01-04
+Version: 0.3.5
+Published: 2015-02-21
 Author: dichika
-Maintainer: dichika <yourfault@somewhere.net>
 Description: yeah!!!!!!!!!!!!!!!
 License: MIT
 Imports: beepr, png, ggplot2
