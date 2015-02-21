@@ -1,3 +1,4 @@
+#' @export
 yeah <- function(pkgname=NULL){
   sound_path <- ifelse(is.null(pkgname), 
                        system.file("sounds/yeah.wav", package="yeah"),
@@ -9,34 +10,45 @@ yeah <- function(pkgname=NULL){
   beepr::beep(sound_path)
 }
 
+#' @export
 libraryy <- function(package=NULL,...){
   pkg <- as.character(substitute(package))
   library(package=pkg, character.only = TRUE, ...)
   yeah(pkg)
 }
 
+
+#' @export
 detayo <- function(){
   path <- system.file("sounds/yuuisa.wav", package="yeah")
   beepr::beep(path)
 }
 
+
+#' @export
 zoi <- function(){
   path <- system.file("sounds/zoi.wav", package="yeah")
   beepr::beep(path)
 }
 
+
+#' @export
 doudesuka <- function(num=1){
   f <- sprintf("sounds/sinchoku_u_0%s.wav", num)
   path <- system.file(sprintf("sounds/sinchoku_u_0%s.wav", num), package="yeah")
   beepr::beep(path)
 }
 
+
+#' @export
 zoitrance <- function(interval=NULL){
   interval <- ifelse(!is.null(interval), interval, sample(seq(0.2,0.8,0.1),1))
   cat("Want to Stop? Press ESC key")
   repeat{zoi();Sys.sleep(interval);}
 }
 
+
+#' @export
 dsktrance <- function(interval=NULL,num=NULL){
   num <- ifelse(!is.null(num), num, 1)
   interval <- ifelse(!is.null(interval), interval, sample(seq(0.2,0.8,0.1),1))
@@ -44,11 +56,15 @@ dsktrance <- function(interval=NULL,num=NULL){
   repeat{doudesuka(num);Sys.sleep(interval);}
 }
 
+
+#' @export
 ganbare <- function(){
   path <- system.file("sounds/ganbare.wav", package="yeah")
   beepr::beep(path)
 }
 
+
+#' @export
 tsurami <- function(){
   path <- system.file("data/fran.csv", package="yeah")
   dat <- read.csv(path, as.is=TRUE)
@@ -62,6 +78,8 @@ tsurami <- function(){
 }
 
 # numacraw was originally created by Teito Nakagawa
+
+#' @export
 numacraw<-function(get2=FALSE){
     set.seed(Sys.time()) 
     path_back <- system.file("data/back.png", package="yeah")
@@ -93,6 +111,8 @@ numacraw<-function(get2=FALSE){
       )
     }
 }
+
+#' @export
 setNumacraw <- function(){
   .LastuserHook <<- getHook("plot.new")
   setHook("plot.new",numacraw,"append")
@@ -101,11 +121,15 @@ setNumacraw <- function(){
     ggnumacraw()
   }
 }
+
+#' @export
 unsetNumacraw <- function(){
   setHook("plot.new",.LastuserHook,"replace")
   remove(postDrawDetails.gTree, pos = '.GlobalEnv')
 }
 
+
+#' @export
 getnumacraw <- function () {
   path_back <- system.file("data/back.png", package = "yeah")
   path_front <- system.file("data/front.png", package = "yeah")
@@ -113,6 +137,8 @@ getnumacraw <- function () {
   return(png::readPNG(D))
 }
 
+
+#' @export
 ggnumacraw <- function() {
   m <- getnumacraw()
   g <- grid::rasterGrob(m, interpolate = TRUE)
@@ -123,4 +149,13 @@ ggnumacraw <- function() {
                        just = c("center","center"))
   g <- grid::editGrob(g, vp = vp)
   grid::grid.draw(g) 
+}
+
+#' @export
+yrandom <- function(){
+  path_sounds <- system.file("sounds/", package = "yeah")
+  voices <- grep("wav$", list.files(path_sounds), value=TRUE)
+  voice <- sample(voices, 1)
+  path <- paste0(path_sounds, voice)
+  beepr::beep(path)
 }
