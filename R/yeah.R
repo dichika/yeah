@@ -159,3 +159,9 @@ yrandom <- function(){
   path <- paste0(path_sounds, voice)
   beepr::beep(path)
 }
+
+teramonagi <- function(){
+  f <- system.file("img/teramonagi.png", package="yeah")
+  tera <- png::readPNG(f)
+  ggmap::ggimage(tera)
+}
