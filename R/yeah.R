@@ -160,6 +160,7 @@ yrandom <- function(){
   beepr::beep(path)
 }
 
+#' @export
 teramonagi <- function(){
   f <- system.file("img/teramonagi.png", package="yeah")
   tera <- png::readPNG(f)
